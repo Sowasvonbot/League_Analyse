@@ -9,7 +9,7 @@ import java.util.concurrent.ExecutionException;
 public class Main {
 
 
-    public static void main(String[] args) throws ExecutionException, InterruptedException {
+    public static void main(String[] args) throws InterruptedException {
 
         //Sending request async
         Summoner summoner = new Summoner();
@@ -17,7 +17,7 @@ public class Main {
                 .sendRequest(GetRequestBuilder.getRequest(
                                 HttpUrl.parse(Constants.leagueEndpoint +
                                         Constants.apiSummonerByName +
-                                        "adasdadadsdasd")))
+                                        "Sowasvonbaf")))
 
 
                 //When response is ready, cast it into a summoner object, then print the lvl of the summoner
