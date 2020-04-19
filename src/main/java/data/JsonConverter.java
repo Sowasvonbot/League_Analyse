@@ -5,6 +5,13 @@ import org.json.JSONObject;
 
 public abstract class JsonConverter<T> {
 
+    public <T> JsonConverter() {
+    }
+
+    public <T> JsonConverter(String JSONObject){
+        jsonToObject(JSONObject);
+    }
+
 
     public abstract T jsonToObject(JSONObject jsonObject);
 

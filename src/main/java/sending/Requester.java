@@ -72,7 +72,7 @@ public abstract class Requester {
 
 
     public enum Endpoint{
-        MATCH, SUMMONER, MATCHLIST, MATCHTIMELINE
+        MATCH, SUMMONER, MATCHLIST, MATCHTIMELINE, SPECTATOR
     }
 
 

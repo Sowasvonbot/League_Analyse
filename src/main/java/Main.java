@@ -20,7 +20,7 @@ public class Main {
 
         Requester.getApiData(
                 Requester.Endpoint.SUMMONER,
-                "azer awp",
+                "byourside",
                 null).thenAccept(jsonConverter -> {
 
                     if (jsonConverter instanceof Summoner) {
