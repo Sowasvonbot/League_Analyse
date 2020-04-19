@@ -1,5 +1,6 @@
 package data;
 
+import data.api.Error;
 import org.json.JSONException;
 import org.json.JSONObject;
 

@@ -20,6 +20,51 @@ public class ActiveGame extends JsonConverter<ActiveGame> {
     private Observer observers;
     private List<CurrentGameParticipant> participants;
 
+
+    public long getGameId() {
+        return gameId;
+    }
+
+    public String getGameType() {
+        return gameType;
+    }
+
+    public long getGameStartTime() {
+        return gameStartTime;
+    }
+
+    public long getMapId() {
+        return mapId;
+    }
+
+    public long getGameLength() {
+        return gameLength;
+    }
+
+    public String getPlatformId() {
+        return platformId;
+    }
+
+    public String getGameMode() {
+        return gameMode;
+    }
+
+    public List<BannedChampion> getBannedChampions() {
+        return bannedChampions;
+    }
+
+    public long getGameQueueConfigId() {
+        return gameQueueConfigId;
+    }
+
+    public Observer getObservers() {
+        return observers;
+    }
+
+    public List<CurrentGameParticipant> getParticipants() {
+        return participants;
+    }
+
     public ActiveGame(){
         bannedChampions = new ArrayList<>();
         participants = new ArrayList<>();
@@ -34,7 +79,7 @@ public class ActiveGame extends JsonConverter<ActiveGame> {
         gameLength = jsonObject.getLong("gameLength");
         platformId = jsonObject.getString("platformId");
         gameMode = jsonObject.getString("gameMode");
-        jsonObject.getJSONArray("BannedChampion").forEach(o ->
+        jsonObject.getJSONArray("bannedChampions").forEach(o ->
                 bannedChampions.add(new BannedChampion().jsonToObject(new JSONObject(o.toString()))));
         gameQueueConfigId = jsonObject.getLong("gameQueueConfigId");
         observers = new Observer(jsonObject.getJSONObject("observers").toString());
@@ -119,7 +164,7 @@ public class ActiveGame extends JsonConverter<ActiveGame> {
             summonerId = jsonObject.getString("summonerId");
             spell1Id = jsonObject.getLong("spell1Id");
             spell2Id = jsonObject.getLong("spell2Id");
-            jsonObject.getJSONArray("gameCustomizationObject").forEach(o ->
+            jsonObject.getJSONArray("GameCustomizationObject").forEach(o ->
                     gameCustomizationObjects.add(new GameCustomizationObject().jsonToObject(o.toString())));
             return this;
         }

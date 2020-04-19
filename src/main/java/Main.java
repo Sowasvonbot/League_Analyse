@@ -1,5 +1,6 @@
 import data.Constants;
 import data.JsonConverter;
+import data.api.ActiveGame;
 import data.api.Error;
 import data.api.Summoner;
 import data.api.matches.Match;
@@ -20,15 +21,15 @@ public class Main {
 
         Requester.getApiData(
                 Requester.Endpoint.SUMMONER,
-                "byourside",
+                "Sowasvonbaf",
                 null).thenAccept(jsonConverter -> {
 
                     if (jsonConverter instanceof Summoner) {
-                        Requester.getApiData(Requester.Endpoint.MATCHLIST,
-                                ((Summoner) jsonConverter).getAccountID(),
+                        Requester.getApiData(Requester.Endpoint.SPECTATOR,
+                                ((Summoner) jsonConverter).getId(),
                                 null).thenAccept(jsonConverter1 -> {
-                            MatchList matchList = (MatchList) jsonConverter1;
-                            matchList.getMatches().forEach(matchReference -> System.out.println(matchReference.getLane()));
+                            ActiveGame matchList = (ActiveGame) jsonConverter1;
+                            matchList.getBannedChampions().forEach(matchReference -> System.out.println(matchReference.getChampionID()));
                         });
                     } else {
                         System.out.println(((Error) jsonConverter).getErrorMessage());

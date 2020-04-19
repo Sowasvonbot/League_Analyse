@@ -2,6 +2,7 @@ package sending;
 
 import data.Constants;
 import data.JsonConverter;
+import data.api.ActiveGame;
 import data.api.Error;
 import data.api.Summoner;
 import data.api.matches.Match;
@@ -40,6 +41,10 @@ public abstract class Requester {
                 data = new MatchTimeline();
                 url += Constants.apiMatchTimeLineByID + pathData;
                 break;
+            case SPECTATOR:
+                data = new ActiveGame();
+                url += Constants.apiSpectatorByID + pathData;
+                break;
             default:
                 future.complete(new Error("No correct enum given", 4));
                 return future;
@@ -48,6 +53,7 @@ public abstract class Requester {
 
 
         String finalUrl = url;
+        System.out.println(url);
 
         future = CompletableFuture.supplyAsync(() -> RequestSender.sendRequest(GetRequestBuilder.getRequest(
                 finalUrl,
